@@ -18,6 +18,8 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [dateString, setDateString] = useState('');
 
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+
   const fetchData = async () => {
     setIsLoading(true);
     const now = new Date();
@@ -29,7 +31,7 @@ export default function Home() {
     setDateString(formattedDate);
 
     try {
-      const response = await fetch('https://api.kromascan.com/api?module=account&action=balance&address=0x7afb9de72A9A321fA535Bb36b7bF0c987b42b859&tag=latest&apikey=S3E2HSJH694PRNNXW1E75ZBUXIQ7QVWWXR');
+      const response = await fetch(`https://api.kromascan.com/api?module=account&action=balance&address=0x7afb9de72A9A321fA535Bb36b7bF0c987b42b859&tag=latest&apikey=${apiKey}`);
 
       const response2 = await fetch(`https://api.coinpaprika.com/v1/coins/eth-ethereum/ohlcv/historical?start=${formattedDate}`);
       const response3 = await fetch(`https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD`);
