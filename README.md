@@ -48,7 +48,9 @@ This project is a simple Next.js application that fetches and displays the balan
 - Clean and responsive table layout for better readability.
 - Add new chains
 
-## Learn More
+# [IMPORTANT]
+- The repo uses [`API`](https://api.coinpaprika.com) to get the value changes in the given token in last 12 hour.
+- It sometimes stops working so please refer to the working to see the working of the webapp.
 
 
 
