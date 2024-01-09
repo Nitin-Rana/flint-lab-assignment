@@ -46,7 +46,8 @@ This project is a simple Next.js application that fetches and displays the balan
 
 - Fetch and display balances of various wallet addresses.
 - Clean and responsive table layout for better readability.
-- Add new chains
+- Add new chains.
+- Data gets updated in real time.
 
 # [IMPORTANT]
 - The repo uses [`Coin Paprika API`](https://api.coinpaprika.com) to get the value changes in the given token in last 12 hour.
