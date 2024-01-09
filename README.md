@@ -48,6 +48,7 @@ This project is a simple Next.js application that fetches and displays the balan
 - Clean and responsive table layout for better readability.
 - Add new chains.
 - Data gets updated in real time.
+- User gets notification if native balance chances by 10%.
 
 # [IMPORTANT]
 - The repo uses [`Coin Paprika API`](https://api.coinpaprika.com) to get the value changes in the given token in last 12 hour.
