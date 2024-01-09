@@ -8,7 +8,7 @@ This project is a simple Next.js application that fetches and displays the balan
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/wallet-balance-tracker.git
+    git clone https://github.com/Nitin-Rana/wallet-balance-tracker.git
     cd wallet-balance-tracker
     ```
 
