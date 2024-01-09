@@ -4,12 +4,9 @@ import { Center, Box, Flex } from '@chakra-ui/react';
 import BalanceBox from '@/components/BalanceBox';
 import SearchBox from '@/components/SearchBox';
 
-
-
 export default function Home() {
   //set default wallet address
   const [searchTerm, setSearchTerm] = useState('0xDCBc586cAb42a1D193CaCD165a81E5fbd9B428d7');
-  const [perChange, setPerChange] = useState(0);
 
   //define available chains
   const chains = [
@@ -27,7 +24,7 @@ export default function Home() {
     <Center h="100vh" flexDirection="column">
       <Box width={['100%', '75%', '50%', '25%']} mb={4}>
       <SearchBox
-          placeholder="Input Contact Address..."
+          placeholder="Input Contract Address..."
           onChange={(value:any) => setSearchTerm(value)}
           onSearchClick={handleSearchClick}
         />
