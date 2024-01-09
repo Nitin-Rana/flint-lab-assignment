@@ -1,26 +1,31 @@
-// SearchBox.tsx
-import React from 'react';
-import { Input, InputGroup, InputRightElement } from '@chakra-ui/react';
-import { SearchIcon } from '@chakra-ui/icons';
+import React, { useState } from 'react';
+import { Input, Button, Flex } from '@chakra-ui/react';
 
-interface SearchBoxProps {
-  placeholder: string;
-  onChange: (value: string) => void;
-}
+const SearchBox = ({ placeholder, onChange, onSearchClick }:any) => {
+  const [inputValue, setInputValue] = useState('');
 
-const SearchBox: React.FC<SearchBoxProps> = ({ placeholder, onChange }) => {
+  const handleInputChange = (event:any) => {
+    setInputValue(event.target.value);
+    onChange(event.target.value);
+  };
+
+  const handleSearchClick = () => {
+    // Call the onSearchClick callback with the current input value
+    onSearchClick(inputValue);
+  };
+
   return (
-    <InputGroup>
+    <Flex>
       <Input
         type="text"
         placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
-        borderRadius="md"
+        value={inputValue}
+        onChange={handleInputChange}
       />
-      <InputRightElement>
-        <SearchIcon color="gray.500" />
-      </InputRightElement>
-    </InputGroup>
+      <Button ml={2} onClick={handleSearchClick}>
+        Search
+      </Button>
+    </Flex>
   );
 };
 

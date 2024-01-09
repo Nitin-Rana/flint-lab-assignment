@@ -15,7 +15,7 @@ import {
   Td,
 } from '@chakra-ui/react';
 
-const BalanceBox = ({ address, apiKey, walletAddress }:any) => {
+const BalanceBox = ({ address, apiKey, walletAddress, name }:any) => {
   const [balance, setBalance] = useState(0);
   const [currentETHPrice, setCurrentETHPrice] = useState(0);
   const [perChange, setPerChange] = useState(0);
@@ -66,7 +66,7 @@ const BalanceBox = ({ address, apiKey, walletAddress }:any) => {
   return (
     <Box p={8} borderWidth="1px" borderRadius="lg" boxShadow="lg" textAlign="center" mb={8}>
       <Heading as="h2" size="md" mb={4}>
-        Wallet Balance
+        {name}
       </Heading>
       {error ? (
         <Alert status="error">
