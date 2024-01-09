@@ -27,7 +27,7 @@ export default function Home() {
     <Center h="100vh" flexDirection="column">
       <Box width={['100%', '75%', '50%', '25%']} mb={4}>
       <SearchBox
-          placeholder="Search balances..."
+          placeholder="Input Contact Address..."
           onChange={(value:any) => setSearchTerm(value)}
           onSearchClick={handleSearchClick}
         />
