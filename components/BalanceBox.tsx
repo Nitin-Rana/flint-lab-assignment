@@ -18,7 +18,7 @@ import {
 const BalanceBox = ({ address, apiKey, walletAddress, name }:any) => {
   const [balance, setBalance] = useState(0);
   const [currentETHPrice, setCurrentETHPrice] = useState(0);
-  const [perChange, setPerChange] = useState(0);
+  const [perChange, setPerChange] = useState(11.23);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
