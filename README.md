@@ -52,7 +52,7 @@ This project is a simple Next.js application that fetches and displays the balan
 
 # [IMPORTANT]
 - The repo uses [`Coin Paprika API`](https://api.coinpaprika.com) to get the value changes in the given token in last 12 hour.
-- It sometimes stops working so please refer to the working to see the working of the webapp.
+- It sometimes stops working so please refer to the video to see the working of the webapp.
 - The project uses no separate backend so all the keys and wallet addresses are in exposed condition as I wanted the user to add their own addresses to the code.
 
 
