@@ -34,7 +34,7 @@ export default function Home() {
       </Box>
       <Flex>
         {chains.map((chain, index) => (
-          <BalanceBox key={index} address={chain.address} apiKey={chain.apiKey} walletAddress={searchTerm} name={chain.name}/>
+          <BalanceBox key={`${chain.address}-${searchTerm}`} address={chain.address} apiKey={chain.apiKey} walletAddress={searchTerm} name={chain.name}/>
         ))}
       </Flex>
     </Center>

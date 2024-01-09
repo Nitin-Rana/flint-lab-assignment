@@ -29,15 +29,15 @@ const BalanceBox = ({ address, apiKey, walletAddress, name }:any) => {
     const formattedDate = now.toISOString().slice(0, 19) + 'Z';
 
     try {
-      const response = await fetch(`${address}/api?module=account&action=balance&address=${walletAddress}&tag=latest&apikey=${apiKey}`);
+      const balance = await fetch(`${address}/api?module=account&action=balance&address=${walletAddress}&tag=latest&apikey=${apiKey}`);
 
       const ethPrice = await fetch(`https://api.coinpaprika.com/v1/coins/eth-ethereum/ohlcv/historical?start=${formattedDate}`);
 
-      const response3 = await fetch(`https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD`);
+      const currentEthPrice = await fetch(`https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD`);
 
-      const data = await response.json();
+      const data = await balance.json();
       const currentPrice = await ethPrice.json();
-      const data3 = await response3.json();
+      const data3 = await currentEthPrice.json();
 
       setPerChange(((Number(currentPrice[0]['open']) - Number(data3.USD)) / Number(currentPrice[0]['open'])) * 100);
       setCurrentETHPrice(data3.USD);
@@ -64,10 +64,11 @@ const BalanceBox = ({ address, apiKey, walletAddress, name }:any) => {
   }
 
   return (
-    <Box p={8} borderWidth="1px" borderRadius="lg" boxShadow="lg" textAlign="center" mb={8}>
+    <Box p={8} borderWidth="1px" borderRadius="lg" boxShadow="lg" textAlign="center" mb={8} sx={{margin:'1rem'}}>
       <Heading as="h2" size="md" mb={4}>
         {name}
       </Heading>
+
       {error ? (
         <Alert status="error">
           <AlertIcon />
@@ -75,7 +76,16 @@ const BalanceBox = ({ address, apiKey, walletAddress, name }:any) => {
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       ) : (
-        <Table variant="simple" size="sm" colorScheme="teal">
+        <>
+          {Math.abs(perChange) > 10 && (
+            <Alert status={perChange > 0 ? "success" : "warning"}>
+              <AlertIcon />
+              <AlertDescription>
+                {perChange > 0 ? "Balance increased by more than 10%" : "Balance decreased by more than 10%"}
+              </AlertDescription>
+            </Alert>
+          )}
+          <Table variant="simple" size="sm" colorScheme="teal">
           <Thead>
             <Tr>
               <Th>Property</Th>
@@ -84,19 +94,20 @@ const BalanceBox = ({ address, apiKey, walletAddress, name }:any) => {
           </Thead>
           <Tbody>
             <Tr>
-              <Td>Balance</Td>
+              <Td>Balance(eth)</Td>
               <Td isNumeric>{Number(balance).toFixed(3)}</Td>
             </Tr>
             <Tr>
-              <Td>ETH Price</Td>
+              <Td>ETH Price($)</Td>
               <Td isNumeric>{Number(currentETHPrice).toFixed(3)}</Td>
             </Tr>
             <Tr>
-              <Td>Percentage Change</Td>
+              <Td>Percentage Change in 12h</Td>
               <Td isNumeric>{Number(perChange).toFixed(3)}%</Td>
             </Tr>
           </Tbody>
-        </Table>
+          </Table>
+        </>
       )}
     </Box>
   );
